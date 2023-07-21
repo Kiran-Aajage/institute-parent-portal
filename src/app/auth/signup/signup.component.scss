@@ -1,0 +1,149 @@
+.nav-link {
+    color: #666;
+}
+
+.tabs {
+    position: absolute;
+    top: 50%;
+    left: 32%;
+    transform: translate(-50%, -50%);
+    width: 62%;
+    height: 100%;
+    margin-top: 10px;
+}
+
+.tabs .tab-header {
+    //     background: #f5f5f5;
+    padding: 10px;
+    display: flex;
+    font-size: 20px;
+    height: 70px;
+}
+
+.tabs .tab-header > div {
+    position: relative;
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    z-index: 2;
+    font-weight: 600;
+    color: #888;
+    cursor: pointer;
+    transition: color 300ms ease-in-out;
+}
+
+.tabs .tab-header > div.active {
+    color: white;
+    border-radius: 20px;
+    opacity: 1;
+}
+
+.tab-header .cursor-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.tabs .tab-indicator {
+    position: absolute;
+    width: 20%;
+    height: 40px;
+    background-image: linear-gradient(to right, #835dea, #462ea5);
+    border: none;
+    top: 10px;
+    left: 10px;
+    border-radius: 10px 40px;
+    transition: left 200ms ease-in-out;
+}
+
+.tabs .tab-body {
+    position: relative;
+    padding: 10px;
+    // background: #f5f5f5;
+    border-top: 1px solid #ddd;
+    // height: 100%;
+    // overflow: hidden;
+}
+.tabs .tab-body > div {
+    display: none;
+}
+
+.tabs .tab-body > div.active {
+    display: block;
+}
+
+.tabs .tab-body {
+    position: relative;
+    padding: 10px;
+    height: auto;
+    // overflow: hidden;
+}
+
+.tabs .tab-body h1 {
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.tabs .tab-body p {
+    color: #555;
+    font-size: 15px;
+}
+
+.container {
+    position: absolute;
+    top: 45%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    width: 100%;
+    max-width: 30%;
+}
+.img-container {
+    width: 100%;
+    display: flex;
+    animation: slide 24s infinite;
+}
+img {
+    width: 100%;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(0);
+    }
+    30% {
+        transform: translateX(-100%);
+    }
+    35% {
+        transform: translateX(-100%);
+    }
+    45% {
+        transform: translateX(-200%);
+    }
+    50% {
+        transform: translateX(-200%);
+    }
+    55% {
+        transform: translateX(-300%);
+    }
+    60% {
+        transform: translateX(-300%);
+    }
+    65% {
+        transform: translateX(-400%);
+    }
+    76% {
+        transform: translateX(-500%);
+    }
+    85% {
+        transform: translateX(-600%);
+    }
+    95% {
+        transform: translateX(-700%);
+    }
+    100% {
+        transform: translateX(-800%);
+    }
+}

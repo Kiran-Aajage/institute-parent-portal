@@ -1,0 +1,34 @@
+<div class="layout-topbar pAnimate fadeinup animation-duration-500 animation-ease-out">
+    <p-menu #menu [popup]="true" [model]="items"></p-menu>
+
+    <a class="layout-topbar-logo" routerLink="">
+        <img src="https://www.npstx.com/wp-content/themes/npstx/assets/dist/images/logo/logo_reverse.svg" alt="logo" />
+    </a>
+
+    <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()"
+        style="margin-right: 62%">
+        <i class="pi pi-bars"></i>
+    </button>
+
+    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button"
+        (click)="layoutService.showProfileSidebar()">
+        <i class="pi pi-ellipsis-v"></i>
+    </button>
+
+    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{
+            'layout-topbar-menu-mobile-active':
+                layoutService.state.profileSidebarVisible
+        }">
+        <p-dropdown [options]="institute" [(ngModel)]="selectedInstitute" (ngModelChange)="setSchool($event)"
+            optionLabel="instituteName"></p-dropdown>
+
+        <!-- <button class="p-link layout-topbar-button" (click)="menu.toggle($event)">
+            <i class="pi pi-user"></i>
+            <span>Profile</span>
+        </button> -->
+
+        <p-avatar label="S" styleClass="mr-2"
+            [style]="{ 'background-color': '#9c27b0', color: '#ffffff','margin-top':'7px','width' :'30px','margin-left':'10px'}"
+            shape="circle" (click)="menu.toggle($event)"></p-avatar>
+    </div>
+</div>

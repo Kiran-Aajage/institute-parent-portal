@@ -1,0 +1,128 @@
+<div class="steper" [style]="{
+
+    'align-items': 'center',
+}">
+    <!-- <div class="card">
+
+        <p-tabView [(activeIndex)]="activeIndex" styleClass="tabview-custom">
+            <p-tabPanel>
+
+                <ng-template pTemplate="header">
+                    <h4><span *ngIf="personalInfoComplete"></span>
+                        Personal</h4>
+                </ng-template>
+                <p>
+                    <app-personal-info (onSavePersonalInfo)="onSavePersonalInfo($event)"></app-personal-info>
+
+                </p>
+            </p-tabPanel>
+
+            <p-tabPanel header="Institute">
+
+                <ng-template pTemplate="header">
+                    <h4><span *ngIf="instituteInfoComplete"></span>
+                        Institute</h4>
+                </ng-template>
+                <app-institute-info (onSaveInstInfo)="onSaveInstInfo($event)"></app-institute-info>
+            </p-tabPanel>
+
+            <p-tabPanel header="Bank">
+
+                <ng-template pTemplate="header">
+                    <h4> <span *ngIf="bankInfoComplete"></span>
+                        Bank</h4>
+                </ng-template>
+                <app-bank-info (onSaveBankInfo)="onSaveBankInfo($event)"></app-bank-info>
+
+            </p-tabPanel>
+
+
+            <p-tabPanel header="KYC">
+
+                <ng-template pTemplate="header">
+                    <h4><span *ngIf="kycInfoComplete"></span> Kyc
+                    </h4>
+                </ng-template>
+                <app-kyc-info (onKycUpload)="KycUploadfn($event)" [aadhaarStatus]="uploadAadhaar"
+                    [PANStatus]="uploadPAN" [REGStatus]="uploadREG" [GSTStatus]="uploadGST"></app-kyc-info>
+
+            </p-tabPanel>
+
+            <p-tabPanel header="Status">
+
+                <ng-template pTemplate="header">
+                    <h4> <span> </span> Status</h4>
+                </ng-template>
+                <app-status [index]="activeIndex"></app-status>
+            </p-tabPanel>
+        </p-tabView>
+    </div> -->
+
+</div>
+<div class="tabs">
+    <div class="tab-header">
+        <div class="cursor-disabled" [class.active]="activeTab === 'Personal'" (click)="setActiveTab('Personal')"
+            [class.disabled]="activeTab !== 'Personal'">Personal</div>
+        <div class="cursor-disabled" [class.active]="activeTab === 'Institute'" (click)="setActiveTab('Institute')"
+            [class.disabled]="activeTab !== 'Institute'">Institute</div>
+        <div class="cursor-disabled" [class.active]="activeTab === 'Bank'" (click)="setActiveTab('Bank')"
+            [class.disabled]="activeTab !== 'Bank'">Bank</div>
+        <div class="cursor-disabled" [class.active]="activeTab === 'Kyc'" (click)="setActiveTab('Kyc')"
+            [class.disabled]="activeTab !== 'Kyc'">
+            Kyc</div>
+        <div class="cursor-disabled" [class.active]="activeTab === 'Status'" (click)="setActiveTab('Status')"
+            [class.disabled]="activeTab !== 'Status'">Status</div>
+
+    </div>
+    <div class="tab-indicator" [style.left.%]="getActiveTabIndex()* (100 / tabs.length)"></div>
+    <div class="tab-body">
+        <div [class.active]="activeTab === 'Personal'">
+            <p>
+
+                <app-personal-info (onSavePersonalInfo)="onSavePersonalInfo($event)"></app-personal-info>
+            </p>
+        </div>
+        <div [class.active]="activeTab === 'Institute'">
+            <p>
+                <app-institute-info (onSaveInstInfo)="onSaveInstInfo($event)"></app-institute-info>
+
+            </p>
+        </div>
+        <div [class.active]="activeTab === 'Bank'">
+
+            <p>
+                <app-bank-info (onSaveBankInfo)="onSaveBankInfo($event)"></app-bank-info>
+
+            </p>
+        </div>
+        <div [class.active]="activeTab === 'Kyc'">
+            <p>
+                <app-kyc-info (onKycUpload)="KycUploadfn($event)" [aadhaarStatus]="uploadAadhaar"
+                    [PANStatus]="uploadPAN" [REGStatus]="uploadREG" [GSTStatus]="uploadGST"></app-kyc-info>
+
+            </p>
+        </div>
+        <div [class.active]="activeTab === 'Status'">
+            <p>
+                <app-status [index]="activeIndex"></app-status>
+
+            </p>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="img-container">
+        <img src="../../../assets/layout/images/7809438.jpg" alt="">
+        <img src="../../../assets/layout/images/4119036.jpg" alt="">
+        <img src="../../../assets/layout/images/3156627 (1).jpg" alt="">
+        <img src="../../../assets/layout/images/3515462.jpg" alt="">
+        <img src="../../../assets/layout/images/6101073.jpg" alt="">
+        <img src="../../../assets/layout/images/6134225.jpg" alt="">
+        <img src="../../../assets/layout/images/6310507.jpg" alt="">
+        <img src="../../../assets/layout/images/8292064.jpg" alt="">
+        <img src="../../../assets/layout/images/Mobile-login.jpg" alt="">
+
+    </div>
+</div>
+
+<router-outlet></router-outlet>

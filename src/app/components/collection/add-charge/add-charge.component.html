@@ -1,0 +1,144 @@
+<!--<div>
+    <div class="col-12">
+        <form [formGroup]="addCharge">
+            <!--<div class="formgrid grid">-->
+<!--<div style="display: flex;" >
+                    <label for="firstname2">Charge Name</label>
+                    <div style="display: flex;flex-direction: column;">
+                        <div class="p-inputgroup">
+                            <input #myInputField placeholder="Enter charge name" type="text" formControlName="chargeName"
+                                pInputText />
+
+
+                        </div>
+
+                        <div *ngIf="myInputField.value  === '' && submitted" class="error-message"
+                        style="color: red;text-align: left;margin-top: 6px;font-size: 14px;"> Enter Charge name!
+
+                    </div>
+
+                    <div *ngIf="addCharge.controls['chargeName'].touched ">
+                        <div *ngIf=" addCharge.controls['chargeName'].hasError('required') && !submitted"
+                            style="color: red;text-align: left;margin-top: 6px;font-size: 14px;">
+                            Enter Charge name!
+
+                        </div>
+                        <div *ngIf="addCharge.controls['chargeName'].hasError('pattern')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter a valid institute name!
+                        </div>
+
+                    </div>
+
+                    </div>
+
+
+
+                    <label for="firstname2">Charge Name</label>
+
+
+                </div>
+
+           </div>
+
+        </form>
+    </div>
+</div>-->
+
+<div class="formgrid grid">
+    <form [formGroup]="addCharge">
+        <div></div>
+        <div class="field col-12 lg:col-12 md:col-12">
+            <label for="firstname2">Charge Name</label>
+
+            <div class="p-inputgroup">
+                <input #myInputField placeholder="Enter charge name" type="text" formControlName="chargeName"
+                    pInputText />
+
+
+            </div>
+
+            <div *ngIf="myInputField.value  === '' && submitted" class="error-message"
+                style="color: red;text-align: left;margin-top: 6px;font-size: 14px;"> Enter Charge name!
+
+            </div>
+        </div>
+        <div *ngIf="addCharge.controls['chargeName'].touched ">
+            <div *ngIf=" addCharge.controls['chargeName'].hasError('required') && !submitted"
+                style="color: red;text-align: left;margin-top: 6px;font-size: 14px;">
+                Enter Charge name!
+
+            </div>
+            <div *ngIf="addCharge.controls['chargeName'].hasError('pattern')"
+                style="color: red;text-align: left;margin-top: 6px;">
+                Enter a valid institute name!
+            </div>
+
+        </div>
+
+
+
+        <div class="field col-12 lg:col-12 md:col-12 ">
+            <label for="firstname2">Rate</label>
+
+            <div style="display: flex;flex-direction: column;">
+                <div class="p-inputgroup">
+                    <input #myInputField1 formControlName="rate" placeholder="Enter Rate" type="text" pInputText
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+                </div>
+
+
+                <div *ngIf="myInputField.value  === '' && submitted" class="error-message"
+                    style="color: red;text-align: left;margin-top: 6px;font-size: 14px;"> Enter Rate!
+
+                    <div *ngIf="addCharge.controls['chargeName'].touched ">
+                        <div *ngIf=" addCharge.controls['chargeName'].hasError('required') && !submitted"
+                            style="color: red;text-align: left;font-size: 14px;">
+                            Enter Rate!
+
+                        </div>
+                        <div *ngIf="addCharge.controls['chargeName'].hasError('pattern')"
+                            style="color: red;text-align: left">
+                            Enter a valid institute name!
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="field col-12 lg:col-12 md:col-12 ">
+
+            <!-- <label for="firstname2">Description</label>
+
+        <div class="p-inputgroup">
+
+
+            <textarea rows="5" cols="40" maxlength="250" formControlName="description" placeholder="Enter description" type="text"
+                pInputTextarea style="border-radius: 7px;text-align: left; "></textarea>
+
+        </div> -->
+
+
+        </div>
+
+
+        <br>
+
+        <p-button [style]="{'margin-left':'12px'}" [label]="'SAVE'" (click)="save()"></p-button>
+
+
+
+
+    </form>

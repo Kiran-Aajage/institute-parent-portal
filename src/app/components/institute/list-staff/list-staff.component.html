@@ -1,0 +1,129 @@
+<p-menu #menu [model]="items" [popup]="true"></p-menu>
+<div class="card" style="width: 100%;">
+    <div *ngIf="staff">
+        <form [formGroup]="staffFilter">
+            <p-accordion [activeIndex]="1">
+                <p-accordionTab header="Apply Filter">
+                    <div class="formgrid grid">
+                        <div class="field col-12 lg:col-4 md:col-12">
+                            <label for="firstname2">First name</label>
+                            <div class="p-inputgroup">
+                                <input placeholder="Enter First name" type="text" formControlName="firstName"
+                                    pInputText />
+                            </div>
+                        </div>
+
+                        <div class="field col-12 lg:col-4 md:col-12">
+                            <label for="firstname2">Last name</label>
+
+                            <div class="p-inputgroup">
+                                <input formControlName="lastName" placeholder="Enter Last name" type="text" pInputText
+                                    oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+                            </div>
+                        </div>
+
+                        <div class="field col-12 lg:col-4 md:col-12">
+                            <label for="firstname2">Email</label>
+                            <div class="p-inputgroup">
+                                <input formControlName="email" placeholder="Enter Email" type="text" pInputText
+                                    oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+                            </div>
+                        </div>
+                        <div class="field col-12 lg:col-4 md:col-12">
+                            <label for="firstname2">Mobile no</label>
+                            <div class="p-inputgroup">
+                                <input formControlName="mobileNo" placeholder="Enter Mobile no" pInputText
+                                    minlength="10" maxlength="10" type="mobileNo" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <p-button [style]="{
+                            'margin-left': '12px',
+                            'background-color': '#651fff'
+                        }" [label]="'APPLY'" (click)="filteredValues()"></p-button>
+                </p-accordionTab>
+            </p-accordion>
+        </form>
+
+        <br />
+
+        <p-table [scrollable]="true" #dt [value]="staff" dataKey="userId" [rows]="10"
+            [globalFilterFields]="['firstName', 'lastName', 'email', 'mobileNo']"
+            [tableStyle]="{ 'min-width': '75rem' }"
+            class="pAnimate scalein fadeout animation-duration-1000 animation-ease-out">
+            <!-- <ng-template pTemplate="caption">
+                <div class="flex-container">
+                    <h2>List of Staff</h2>
+    
+                </div>
+            </ng-template> -->
+
+            <ng-template pTemplate="caption">
+                <div class="flex-container">
+                    <h2>List of Staff</h2>
+                    <p-splitButton icon="pi pi-download" label="Download" [model]="this.saveOptions"
+                        styleClass="p-button-outlined mr-2 mb-2">
+                    </p-splitButton>
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input (input)="
+                                dt.filterGlobal(
+                                    $any($event.target).value,
+                                    'contains'
+                                )
+                            " placeholder="Search Staffs" type="text" pInputText />
+                    </span>
+
+                    <button pButton pRipple label="+ Add Staff" (click)="navigateToAddBank()"
+                        class="pAnimate zoomin animation-duration-500 animation-ease-out"></button>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>FIRST NAME</th>
+                    <th>LAST NAME</th>
+                    <th>EMAIL</th>
+                    <th>MOBILE NO</th>
+                    <th alignFrozen="right" pFrozenColumn>ACTION</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-staff>
+                <tr>
+                    <td>{{ staff.firstName }}</td>
+                    <td>{{ staff.lastName }}</td>
+                    <td>{{ staff.email }}</td>
+                    <td>{{ staff.mobileNo }}</td>
+                    <td alignFrozen="right" pFrozenColumn [style]="{ color: '#0257FF', 'font-weight': 'bold' }">
+                        <p-button (click)="handleClick(staff.userId); menu.toggle($event)" icon="pi pi-ellipsis-v"
+                            styleClass="p-button-rounded p-button-text">
+                        </p-button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+    <div *ngIf="!staff">
+        <div style="
+                background-color: #f4f6ff;
+                height: 600px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+            ">
+            <div style="
+                    width: 20%;
+                    border-radius: 10px;
+                    box-shadow: rgba(94, 93, 102, 0.08) 1px 1px 0px 0px,
+                        rgba(94, 93, 102, 0.1) 2px 2px 3px 0px;
+                ">
+                <img src="../../../../assets/layout/images/25943-nodata (1).gif" width="100%;" />
+            </div>
+        </div>
+    </div>
+
+</div>

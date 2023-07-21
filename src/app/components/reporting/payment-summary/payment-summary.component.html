@@ -1,0 +1,73 @@
+<div>
+    <p-table [value]="paymentSummary" dataKey="id" [paginatorPosition]="'top'" [scrollable]="true" #dt
+        scrollHeight="62vh" [rows]="10" [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} EMI Plans"
+        [tableStyle]="{'width': '90rem' ,}" [autoLayout]="true" [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['firstName', 'lastName', 'transaction.paymentMode']">
+
+        <ng-template pTemplate="caption">
+            <div class="grid grid-nogutter justify-content-between align-items-center">
+                <p-dropdown (onChange)="onDateSelect($event.value)" [style]="{'width':'100%'}" [showClear]="true"
+                    [options]="date" placeholder="Select Date" optionLabel="name">
+                </p-dropdown>
+                <span class=" p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText placeholder="Search"
+                        (input)="dt.filterGlobal($any($event.target).value, 'contains')">
+                </span>
+
+                <p-splitButton icon="pi pi-download" styleClass="p-button-sm" label="Export" [model]="this.saveOptions"
+                    styleClass="p-button-outlined "></p-splitButton>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+
+            <tr>
+                <th pSortableColumn="transaction.paymentDate">Notification Date
+                </th>
+                <th>Student Name</th>
+                <th>Payment Mode</th>
+                <th>Payment Status</th>
+                <th> Total Balance</th>
+                <th> Next Payment Amount</th>
+                <th>Next Payment Date</th>
+            </tr>
+
+
+        </ng-template>
+        <ng-template pTemplate="body" let-paymentSummary>
+            <tr>
+                <td>{{(paymentSummary.paymentDate) | date:'dd-MM-YYYY' }}</td>
+
+
+
+                <td>{{ paymentSummary.firstName }}</td>
+                <td>{{ paymentSummary.paymentMode }}</td>
+
+                <td>
+                    <p-tag severity="success" value="Paid"></p-tag>
+
+                    <!-- <p-tag *ngIf="paymentSummary.status === 'SUCCESS'" severity="success"
+                        value="{{paymentSummary.status}}"></p-tag>
+                    <p-tag *ngIf="paymentSummary.status === 'FAILED'" severity="danger"
+                        value="{{paymentSummary.status}}"></p-tag>
+                    <p-tag *ngIf="paymentSummary.status === 'PENDING'" severity="warning"
+                        value="{{paymentSummary.status}}"></p-tag> -->
+
+                </td>
+                <!-- <td>{{ paymentSummary.transaction.status }}</td> -->
+                <!-- <td>{{ paymentSummary.planName }}</td> -->
+                <td [style]="{'font-weight': 'bold', 'text-align': 'center'}">{{ paymentSummary.balance | currency:
+                    'INR'}}</td>
+                <td [style]="{'font-weight': 'bold', 'text-align': 'center'}">{{ paymentSummary.paymentAmount |
+                    currency:
+                    'INR'}}
+                </td>
+                <!-- <td>{{ neo4j_driver(paymentSummary.nextDueDate) | date:'dd-MM-YYYY' }}</td> -->
+
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

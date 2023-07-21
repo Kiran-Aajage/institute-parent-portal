@@ -1,0 +1,172 @@
+<!-- <section class="section">
+    <div class="main">
+
+        <div class="intro-section">
+            <h6 class="intro-heading">Welcome</h6>
+            <p class="intro-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe dignissimos officia
+                sint animi voluptatum est praesentium nostrum, iusto earum fugit.</p>
+             <div class="side">
+                 <section class="side">
+                   <img src="../../../assets/layout/images/Thesis-pana.svg" alt="school">
+                 </section>
+             </div>
+        </div>
+        <form [formGroup]="loginGrp">
+            <div class="sign-section">
+
+                <div class="sign-block">
+                    <h3 class="sign-heading">Sign in here</h3>
+                    <div class="input-block">
+
+                        <input type="phone" class="input" placeholder="| &nbsp;Phone" name="phone"
+                            formControlName="mobileNo" required appOnlyNumber maxlength="10" minlength="0" required
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                            pattern="[- +()0-9]{10,12}">
+
+                        <div *ngIf="loginGrp.controls['mobileNo'].touched && loginGrp.controls['mobileNo'].errors">
+                            <div *ngIf="loginGrp.controls['mobileNo'].hasError('required')"
+                                style="color: red;margin-bottom: 10px;">
+                                Enter Mobile No!
+
+                            </div>
+                        </div>
+
+
+                        <input type="password" class="input" placeholder="| &nbsp;Password" id="pwd"
+                            formControlName="password"  type="{{ hidePassword ? 'password' : 'text' }}" class="input" placeholder="| &nbsp;Password" id="pwd" formControlName="password">
+                            <span class="password-toggle" (click)="togglePasswordVisibility()"><i id="toggle-icon" [class]="'fa ' + (hidePassword ? 'fa-eye' : 'fa-eye-slash')"></i></span>
+
+
+
+                        <div
+                            *ngIf="loginGrp.controls['password'].invalid && (loginGrp.controls['password'].dirty || loginGrp.controls['password'].touched)">
+                            <span
+                                *ngIf="loginGrp.controls['password'].errors?.['required'] && loginGrp.controls['password'].touched"
+                                style="color:red"> Enter your password</span>
+                            <span
+                                *ngIf="loginGrp.controls['password'].errors?.['password'] && loginGrp.controls['password'].touched"
+                                style="color:red">Invalid password</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="password-block">
+                        <div>
+                            <h6>Not a user? <a routerLink="/auth/signup"
+                                    class="font-medium no-underline ml-2 text-right cursor-pointer"
+                                    style="color: var(--primary-color)">Sign up</a> </h6>
+
+                        </div>
+
+                        <a class="password-link" href="#">Forgot password..?</a>
+                    </div>
+
+                    <button class="sign-button" pButton pRipple label="Sign In" (click)="signin()"></button>
+
+
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+</section> -->
+
+
+
+<div class="login">
+    <div class="login__content">
+
+        <div class="login__img" style="display: flex;flex-direction: column;margin-left:30%;">
+            <div style="display: flex;justify-content: center;flex-direction: column;align-items: center;">
+                <div class="time" style=" width: 45%;margin-top: 10px;">
+                    <img src="../../../assets/layout/images/TimePay.png">
+                </div>
+                <h4 style="text-align:center;">School App</h4>
+                <i class="intro-text" style="text-align: center;">"Investing in education pays the best interest."</i>
+
+            </div>
+            <img src="../../../assets/layout/images/Thesis-pana (2).svg" alt="">
+
+            <!-- <img src="../../../assets/layout/images/school3.gif" alt="school"> -->
+
+        </div>
+
+        <div class="login__forms">
+            <form action="" class="login__registre" id="login-in" [formGroup]="loginGrp" style="margin-left: 30%;">
+                <h1 class="login__title">Sign In</h1>
+
+                <div class="login__box">
+                    <i class='bx bx-user login__icon'></i>
+                    <input type="text" placeholder="MobileNo" class="login__input" formControlName="mobileNo" required
+                        appOnlyNumber maxlength="10" minlength="0" required
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                        pattern="[- +()0-9]{10,12}">
+
+                </div>
+                <div *ngIf="loginGrp.controls['mobileNo'].touched && loginGrp.controls['mobileNo'].errors">
+                    <div *ngIf="loginGrp.controls['mobileNo'].hasError('required')"
+                        style="color: red;margin-bottom: 5px; text-align: left;">
+                        Enter Mobile No!
+
+                    </div>
+                </div>
+
+                <!--<div class="login__box">
+                            <i class='bx bx-lock-alt login__icon'></i>
+                            <input type="password" placeholder="Password" class="login__input"  formControlName="password" type="{{ Password ? 'password' : 'text' }}"   >
+                            <span class="password-toggle" (click)="togglePasswordVisibility()"><i id="toggle-icon" [class]="'fa ' + (!hidePassword ? 'fa-eye' : 'fa-eye-slash')" ></i></span>
+
+
+                        </div> -->
+
+                <div class="login__box">
+                    <i class="bx bx-lock-alt login__icon"></i>
+                    <input type="{{ hidePassword ? 'password' : 'text' }}" placeholder="Password" class="login__input"
+                        formControlName="password">
+                    <span class="password-toggle" (click)="togglePasswordVisibility()">
+                        <i id="toggle-icon" [class]="!hidePassword ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+                    </span>
+                </div>
+
+
+                <div>
+
+                    <div *ngIf="loginGrp.controls['password'].touched && loginGrp.controls['password'].errors">
+                        <div *ngIf="loginGrp.controls['password'].hasError('required')"
+                            style="color: red;margin-bottom: 5px; text-align: left;">
+                            Enter your password!
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <a routerLink="/auth/forgot-password" class="login__forgot">Forgot password?</a>
+
+
+
+                <!--<a href="#" class="login__button" pButton pRipple  (click)="signin()">Sign In</a>-->
+                <button class="learn-more">
+                    <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text" (click)="signin()">Sign In</span>
+                </button>
+
+
+
+
+
+                <div>
+                    <span class="login__account">Don't have an Account ?</span>
+                    <span class="login__signin" id="sign-up" routerLink="/auth/signup">Sign Up</span>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>

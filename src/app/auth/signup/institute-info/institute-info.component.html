@@ -1,0 +1,326 @@
+<div class="container" [style]="{
+    'display': 'flex',
+    'align-items': 'center',
+}">
+    <div class="card" [style]="{'width':'100%','height':'88%'}">
+
+        <h3>Institute Details</h3>
+
+        <form class="pt-4" [formGroup]="instituteInfo">
+
+            <div class="p-fluid p-formgrid grid">
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="name">Name<span class="text-red-600"> *</span></label>
+                    <input #myInputField pInputText id="name" type="text" placeholder=" Enter institute name"
+                        formControlName="instituteName" pattern="^[A-Za-z0-9.@#$&() ]{2,}$" />
+                    <div *ngIf="myInputField.value === '' && submitted" class="error-message"
+                        style="color: red;text-align: left;margin-top: 6px;font-size: 14px;"> Enter institute name!
+
+                    </div>
+
+                    <div *ngIf="instituteInfo.controls['instituteName'].touched ">
+                        <div *ngIf=" instituteInfo.controls['instituteName'].hasError('required') && !submitted"
+                            style="color: red;text-align: left;margin-top: 6px;font-size: 14px;">
+                            Enter institute name!
+
+                        </div>
+                        <div *ngIf="instituteInfo.controls['instituteName'].hasError('pattern')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter a valid institute name!
+                        </div>
+
+                    </div>
+
+                    <!-- <div
+                        *ngIf="instituteInfo.controls['instituteName'].touched && instituteInfo.controls['instituteName'].errors">
+                        <div *ngIf="instituteInfo.controls['instituteName'].hasError('required')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter institute name!
+                        </div>
+                        <div *ngIf="instituteInfo.controls['instituteName'].hasError('pattern')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter a valid institute name!
+                        </div>
+
+
+                    </div> -->
+
+                </div>
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="type">Type<span class="text-red-600"> *</span></label>
+                    <p-dropdown [options]="instituteTypes" placeholder="Please Select a Type" optionLabel="name"
+                        formControlName="instituteType" #myInputField4></p-dropdown>
+                    <div *ngIf="myInputField4.value === '' && submitted" class="error-message"
+                        style="color: red;text-align: left;margin-top: 6px;font-size: 14px;"> Please select type!
+
+
+
+                    </div>
+
+                    <div *ngIf="instituteInfo.controls['instituteType'].touched ">
+                        <div *ngIf=" instituteInfo.controls['instituteType'].hasError('required') && !submitted"
+                            style="color: red;text-align: left;margin-top: 6px;font-size: 14px;">
+                            Please select type!
+                        </div>
+
+                    </div>
+
+                    <!-- <div *ngIf="instituteInfo.controls['instituteType'].touched && instituteInfo.controls['instituteType'].hasError('required')"
+                        style="color: red; text-align: left; margin-top: 6px;">
+                        Type is required!
+                    </div> -->
+
+                </div>
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="phone">Phone No<span class="text-red-600"> *</span></label>
+                    <input #myInputField1 pInputTextarea id="phone" rows="4" placeholder=" Enter Mobile Number"
+                        minlength="10" maxlength="10" type="phone" formControlName="institutePhone"
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required
+                        pattern="[0-9 ]{10}" />
+                    <div *ngIf="myInputField1.value === '' && submitted" class="error-message"
+                        style="color: red;text-align: left;margin-top: 6px;font-size: 14px;"> Enter mobile No!
+
+
+                    </div>
+
+                    <div *ngIf="instituteInfo.controls['institutePhone'].touched ">
+                        <div *ngIf=" instituteInfo.controls['institutePhone'].hasError('required') && !submitted"
+                            style="color: red;text-align: left;margin-top: 6px;font-size: 14px;">
+                            Enter mobile No!
+
+                        </div>
+                        <div *ngIf="instituteInfo.controls['institutePhone'].hasError('pattern')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter valid Mobile No!
+                        </div>
+
+                    </div>
+
+                    <!-- <div
+                        *ngIf="instituteInfo.controls['institutePhone'].touched && instituteInfo.controls['institutePhone'].errors">
+                        <div *ngIf="instituteInfo.controls['institutePhone'].hasError('required')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter mobile No!
+
+                        </div>
+                        <div *ngIf="instituteInfo.controls['institutePhone'].hasError('pattern')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter valid Mobile No!
+                        </div>
+                    </div> -->
+
+                </div>
+
+
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="website">Website</label>
+                    <input pInputTextarea id="website" rows="4" formControlName="instituteWebsite"
+                        placeholder=" Enter website" required
+                        pattern="^(http://www.|https://www.|http://|https://)?[a-z0-9]+([-.]{1}[a-z0-9]+)*.[a-z]{2,5}(:[0-9]{1,5})?(/.*)?$" />
+                    <div *ngIf="instituteInfo.controls['instituteWebsite'].hasError('pattern')"
+                        style="color: red;text-align: left;">
+                        Please enter a valid website URL (e.g. https://www.google.com)
+                    </div>
+                </div>
+
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="email">Email</label>
+                    <input pInputTextarea id="email" rows="4" formControlName="instituteEmail"
+                        placeholder=" Enter Email Id" required
+                        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+
+                    <div *ngIf="instituteInfo.controls['instituteEmail'].hasError('pattern')"
+                        style="color: red;text-align: left;">
+                        Enter a valid email Id!
+
+                    </div>
+                </div>
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="board">Board<span class="text-red-600"> *</span></label>
+                    <div class="dropdown-wrapper">
+                        <p-dropdown [options]="board" formControlName="boardType" placeholder="Please Select a Board"
+                            optionLabel="name" #myInputField8>
+                            <ng-template #renderTemplate3>
+                                <div class="container">
+                                    <input (keyup)="onKeyUp()" style="width:10%"
+                                        oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '').replace(/(\..*)\./g, '$1');"
+                                        type="text" class="p-inputtext" #inputElement />
+                                    <!-- <button pButton type="button" class="p-button-text" (click)="addBoard(inputElement)"
+                                        style="margin-left: 10px;">
+                                        <i class="pi pi-plus"></i>
+                                        Add Board
+                                    </button> -->
+                                </div>
+                            </ng-template>
+                        </p-dropdown>
+
+
+                        <ng-template #renderTemplate3>
+                            <div class="container">
+                                <input (keyup)="onKeyUp()" style="width:10%"
+                                    oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '').replace(/(\..*)\./g, '$1');"
+                                    type="text" nz-input #inputElement />
+                                <!-- <button nz-button nzType="text" class="add-item" (click)="addBoard(inputElement)"
+                                    style="margin-left: 10px;">
+                                    <em nz-icon nzType="plus"></em>
+                                    Add Board
+                                </button> -->
+                            </div>
+                        </ng-template>
+
+
+
+                    </div>
+                    <div *ngIf="myInputField8.value === '' && submitted" class="error-message"
+                        style="color: red;text-align: left;margin-top: 6px;font-size: 14px;"> Please select board!
+
+
+                    </div>
+
+                    <div *ngIf="instituteInfo.controls['boardType'].touched ">
+                        <div *ngIf=" instituteInfo.controls['boardType'].hasError('required') && !submitted"
+                            style="color: red;text-align: left;margin-top: 6px;font-size: 14px;">
+                            Please select board!
+                        </div>
+
+                    </div>
+                    <!-- <div *ngIf="instituteInfo.controls['boardType'].touched && instituteInfo.controls['boardType'].hasError('required')"
+                        style="color: red; text-align: left; margin-top: 6px;">
+                        Type is required!
+                    </div> -->
+
+                </div>
+
+
+
+            </div>
+
+            <h3>SPOC</h3>
+
+            <div class="p-fluid p-formgrid grid">
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="spocname">Enter SPOC Name</label>
+                    <input pInputText id="spocname" type="text" placeholder="SPOC Name" formControlName="spocName" />
+
+                </div>
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="spocNumber"> SPOC Phone </label>
+                    <input pInputTextarea id="spocNumber" rows="4" formControlName="spocNumber" minlength="10"
+                        maxlength="10" type="spocNumber"
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                        placeholder="Enter SPOC Phone Number" required pattern="[0-9 ]{10}" />
+                    <div *ngIf="instituteInfo.controls['spocNumber'].hasError('pattern')"
+                        style="color: red;text-align: left;margin-top: 6px;">
+                        Enter valid Mobile No!
+                    </div>
+                </div>
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="spocemail">SPOC Email</label>
+                    <input pInputTextarea id="spocemail" rows="4" placeholder="Enter SPOC Email"
+                        formControlName="spocEmail" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+                    <div *ngIf="instituteInfo.controls['spocEmail'].hasError('pattern')"
+                        style="color: red;text-align: left;">
+                        Enter a valid email Id!
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <h3>Address</h3>
+
+            <div class="p-fluid p-formgrid grid">
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="address1">Line 1</label>
+                    <input pInputTextarea id="address1" rows="4" placeholder=" Enter Address" formControlName="line1" />
+                </div>
+
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="address2">Line 2</label>
+                    <input pInputTextarea id="address2" rows="4" placeholder="Enter Address" formControlName="line2" />
+                </div>
+
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="pincode">Pin Code<span class="text-red-600"> *</span></label>
+                    <input #myInputField3 pInputTextarea id="pincode" rows="4" placeholder=" Enter pin code! "
+                        formControlName="pinCode" pattern="^\d{6}$" maxlength="6" minlength="6" (keyup)="getPin()"
+                        type="search"
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+                    <div *ngIf="myInputField3.value === '' && submitted" class="error-message"
+                        style="color: red;text-align: left;margin-top: 6px;font-size: 14px;"> Enter pin code!
+
+
+                    </div>
+
+                    <div *ngIf="instituteInfo.controls['pinCode'].touched ">
+                        <div *ngIf=" instituteInfo.controls['pinCode'].hasError('required') && !submitted"
+                            style="color: red;text-align: left;margin-top: 6px;font-size: 14px;">
+                            Enter pin code!
+
+                        </div>
+                        <div *ngIf="instituteInfo.controls['pinCode'].hasError('pattern')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter valid pin code!
+                        </div>
+
+                    </div>
+                    <!-- <div *ngIf=" instituteInfo.controls['pinCode'].touched &&
+                        instituteInfo.controls['pinCode'].errors">
+                        <div *ngIf="instituteInfo.controls['pinCode'].hasError('required')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter pin code!
+
+                        </div>
+                        <div *ngIf="instituteInfo.controls['pinCode'].hasError('pattern')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter valid pin code!
+                        </div>
+                    </div> -->
+
+                </div>
+
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="city">City</label>
+                    <input pInputTextarea id="city" rows="4" placeholder="Enter city" formControlName="city" />
+                </div>
+
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="state">State</label>
+                    <input pInputTextarea id="state" rows="4" placeholder="Enter state" formControlName="state" />
+                </div>
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="country">Country</label>
+                    <input pInputTextarea id="country" rows="4" placeholder="Enter country" formControlName="country" />
+                </div>
+
+            </div>
+
+        </form>
+
+        <!-- <p-button label="Submit" (click)="submit()"></p-button> -->
+        <button pButton pRipple label="Submit" (click)="submit1()" style="background-image: linear-gradient(to right, #835dea, #462ea5);
+        border: none; padding: 15px 40px;margin-top: 50px;font-size:17px;font-weight: bold;"> </button>
+        <button pButton pRipple label="Reset" class="resetButton" style="background-image: linear-gradient(to right, #835dea, #462ea5);
+        border: none; padding: 15px 40px;margin-top: 50px;font-size:17px;font-weight: bold;"></button>
+
+    </div>
+</div>
+
+<!-- <form [formGroup]="myForm" (ngSubmit)="onSub()" novalidate>
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" formControlName="name">
+            <div *ngIf="isFieldInvalid('name') && isFieldTouched('name')">Name is required</div>
+            <div *ngIf="isFieldEmptyOnSubmit('name') && !myForm.touched">Name field is required</div>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email">
+            <div *ngIf="isFieldInvalid('email') && isFieldTouched('email')">Invalid email</div>
+            <div *ngIf="isFieldEmptyOnSubmit('email') && !myForm.touched">Email field is required</div>
+        </div>
+        <button type="submit">Submit</button> -->
+<!-- <div *ngIf="myForm.invalid && myForm.touched">Please fill in all fields</div> -->
+<!-- </form> -->
