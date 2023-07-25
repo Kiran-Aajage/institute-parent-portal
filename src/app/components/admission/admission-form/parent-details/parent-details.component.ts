@@ -99,10 +99,7 @@ export class ParentDetailsComponent implements OnInit {
     }
 
     submit() {
-        if (this.ParentsDetails.invalid) {
-            alert('Invalid Form');
-            return;
-        }
+        
         console.log(this.ParentsDetails.value);
         const data = this.ParentsDetails.value;
         const applicationId = this.stateSrv.applicationId;

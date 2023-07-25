@@ -46,52 +46,59 @@ export class AppMenuComponent implements OnInit {
                             icon: 'pi pi-fw pi-id-card',
                             routerLink: ['/main/admission'],
                         },
-                        {
+                        /*{
                             label: 'Delete this ',
                             icon: 'pi pi-fw pi-id-card',
                             routerLink: ['/main/utility/delete-this'],
-                        },
+                        },*/
                     ],
                 },
 
                 {
                     items: [
                         {
-                            label: 'Manage Institutes ',
+                            label: 'Student Details ',
                             icon: 'fa-solid fa-school',
 
                             items: [
                                 {
-                                    label: 'Institute list',
+                                    label: 'Attendance',
                                     icon: 'fa-solid fa-school',
                                     routerLink: ['/main/institute/list'],
+
                                 },
                                 {
-                                    label: 'Bank',
+                                    label: 'Fees',
                                     icon: 'fa fa-money-bill-transfer',
                                     routerLink: ['/main/institute/bank'],
                                 },
                                 {
-                                    label: 'Staff',
+                                    label: 'Grades and Progress',
                                     icon: 'fa-solid fa-users',
                                     routerLink: ['/main/institute/staff'],
                                 },
                                 {
-                                    label: 'KYC',
+                                    label: 'Assignments and Homework',
                                     icon: 'fa-solid fa-file-contract',
                                     routerLink: ['/main/institute/kyc'],
                                 },
+                                // {
+                                    // label: 'Add Institute',
+                                    // icon: 'fa fa-money-bill-transfer',
+                                    // routerLink: ['/main/institute/add'],
+                                // },
+
                                 {
-                                    label: 'Add Institute',
-                                    icon: 'fa fa-money-bill-transfer',
-                                    routerLink: ['/main/institute/add'],
+                                     label: 'School Announcements',
+                                     icon: 'fa fa-money-bill-transfer',
+                                     routerLink: ['/main/institute/add'],
                                 },
                             ],
                         },
                     ],
                 },
 
-                {
+                /*{
                     label: 'Student',
                     items: [
                         {
@@ -130,7 +137,7 @@ export class AppMenuComponent implements OnInit {
                             routerLink: ['/main/reporting/payment-summary'],
                         },
                     ],
-                },
+                },*/
             ];
         } else {
             localStorage.clear();

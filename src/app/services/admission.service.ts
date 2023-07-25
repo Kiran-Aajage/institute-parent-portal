@@ -10,7 +10,7 @@ import { ParentsDetails } from '../models/admission.model';
 export class AdmissionService {
     constructor(private http: HttpClient) {}
 
-    saveStudentDetails(data: StudentDetails) {
+    /*saveStudentDetails(data: StudentDetails) {
         return new Promise((resolve, reject) => {
             this.http
                 .post(environment.url + '/admission/application/save', data)
@@ -18,7 +18,7 @@ export class AdmissionService {
                     resolve(res);
                 });
         });
-    }
+    }*/
     saveParentDetails(data: ParentsDetails) {
         return new Promise((resolve, reject) => {
             this.http

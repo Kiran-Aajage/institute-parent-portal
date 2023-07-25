@@ -96,7 +96,7 @@ export class StudentDetailsComponent implements OnInit {
             schoolId: data.schoolId,
         };
         this.admissionSrv
-            .saveStudentDetails(studentDetailsObj)
+            /*.saveStudentDetails(studentDetailsObj)
             .then((res: any) => {
                 console.log(res.data.applicationId);
                 this.msg.add({
@@ -108,7 +108,7 @@ export class StudentDetailsComponent implements OnInit {
             })
             .catch((err) => {
                 console.log(err);
-            });
+            });*/
     }
     dropdownItems = [
         { name: 'Male', code: 'Male' },

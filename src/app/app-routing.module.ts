@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { NotfoundComponent } from './demo/components/notfound/notfound.component';
 import { AppLayoutComponent } from './layout/app.layout.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
-import { CollectionModule } from './components/collection/collection.module';
 import { UtilityModule } from './utility/utility/utility.module';
 
 const routes: Routes = [
@@ -42,39 +41,18 @@ const routes: Routes = [
                         (m) => m.AdmissionModule
                     ),
             },
-            {
+            /*{
                 path: 'institute',
 
                 loadChildren: () =>
                     import('./components/institute/institute.module').then(
                         (m) => m.InstituteModule
                     ),
-            },
-            {
-                path: 'student',
+            },*/
+           
 
-                loadChildren: () =>
-                    import('./components/student/student.module').then(
-                        (m) => m.StudentModule
-                    ),
-            },
-
-            {
-                path: 'collection',
-
-                loadChildren: () =>
-                    import('./components/collection/collection.module').then(
-                        (m) => m.CollectionModule
-                    ),
-            },
-            {
-                path: 'reporting',
-
-                loadChildren: () =>
-                    import('./components/reporting/reporting.module').then(
-                        (m) => m.ReportingModule
-                    ),
-            },
+        
+        
 
             {
                 path: 'utility',
