@@ -20,8 +20,9 @@ import { AuthInterceptor } from './guards/authInterceptor';
 import { JwtModule, JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { AttendanceComponent } from './components/student-details/attendance/attendance.component';
+import { FeesComponent } from './components/fees/fees.component';
 @NgModule({
-    declarations: [AppComponent, NotfoundComponent, AttendanceComponent],
+    declarations: [AppComponent, NotfoundComponent, AttendanceComponent, FeesComponent],
     imports: [
         AppRoutingModule,
         AppLayoutModule,

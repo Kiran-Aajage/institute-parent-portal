@@ -54,6 +54,19 @@ export class AppMenuComponent implements OnInit {
                     ],
                 },
 
+
+                {
+                    // label: 'Fees',
+
+                    items: [
+                        {
+                            label: 'Fees',
+                            icon: 'fa fa-money-bill-transfer',
+                            routerLink: ['/main/fees']
+                        }
+                    ]
+                },
+
                 {
                     items: [
                         {
@@ -67,11 +80,11 @@ export class AppMenuComponent implements OnInit {
                                     routerLink: ['/main/institute/list'],
 
                                 },
-                                {
-                                    label: 'Fees',
-                                    icon: 'fa fa-money-bill-transfer',
-                                    routerLink: ['/main/institute/bank'],
-                                },
+                                // {
+                                    // label: 'Fees',
+                                //     icon: 'fa fa-money-bill-transfer',
+                                    // routerLink: ['/main/institute/bank'],
+                                // },
                                 {
                                     label: 'Grades and Progress',
                                     icon: 'fa-solid fa-users',
